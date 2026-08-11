@@ -43,15 +43,13 @@ const situations = [
 
 export default function Problem() {
   return (
-    <section className="relative overflow-hidden bg-[#F7F7F5] px-6 py-36 text-[#0B0B0D]">
-
+<section className="relative overflow-hidden bg-[#F7F7F5] py-36 text-[#0B0B0D]">
       {/* Número de fondo */}
       <span className="pointer-events-none absolute left-8 top-0 text-[220px] font-bold leading-none text-black/[0.03] md:left-16 md:text-[420px]">
         01
       </span>
 
-      <div className="relative mx-auto max-w-7xl">
-
+<div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         {/* Encabezado */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
