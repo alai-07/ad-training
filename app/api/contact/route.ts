@@ -204,7 +204,10 @@ export async function POST(request: Request) {
 
     const { error } = await resend.emails.send({
       from: fromEmail,
-      to: [toEmail],
+      to: toEmail
+        .split(",")
+        .map((address) => address.trim())
+        .filter(Boolean),
       replyTo: email,
       subject: `Nueva solicitud de valoración — ${nombre}`,
       html: `
