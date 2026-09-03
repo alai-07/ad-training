@@ -14,70 +14,50 @@ const plans = [
     number: "01",
     name: "AD Essential",
     subtitle: "Tu punto de partida",
-    price: "89€",
+    price: "80€",
     period: "/ mes",
+    quarterlyPrice: "225€",
+    quarterlyPeriod: "/ trimestre",
     description:
-      "Para personas que quieren empezar con una planificación clara, seguimiento y una estructura que puedan mantener.",
+      "Una planificación personalizada para empezar o seguir avanzando con una estructura adaptada a ti.",
     idealFor:
-      "Ideal si buscas mejorar tu composición corporal, ganar fuerza o recuperar la constancia.",
+      "Ideal si buscas mejorar tu composición corporal, ganar fuerza, crear constancia y llevar una planificación adaptada a tu día a día.",
     features: [
-      "Plan de entrenamiento personalizado",
-      "Plan de nutrición adaptado",
+      "Planificación semanal de entrenamiento",
+      "Planificación de nutrición",
       "Seguimiento mediante Harbiz",
-      "Revisión mensual del progreso",
-      "Ajustes según evolución",
-      "Soporte directo por chat",
-
+      "Feedback y soporte vía WhatsApp / Chat Harbiz",
+      "Revisión cada 15 días",
     ],
     cta: "Elegir Essential",
   },
   {
-    id: "performance",
-    number: "02",
-    name: "AD Performance",
-    subtitle: "Da un paso más",
-    price: "129€",
-    period: "/ mes",
-    description:
-      "Un acompañamiento más completo para quienes quieren progresar con mayor precisión, control y seguimiento.",
-    idealFor:
-      "Ideal si ya entrenas y quieres acelerar tu progreso con una estrategia más avanzada.",
-    features: [
-      "Todo lo incluido en Essential",
-      "Revisión del progreso quincenal",
-      "Ajustes más frecuentes de la planificación",
-      "Análisis técnico mediante vídeos",
-      "Seguimiento detallado de tu evolución",
-      "Soporte prioritario por chat",
-    ],
-    cta: "Elegir Performance",
-    featured: true,
-  },
-  {
     id: "elite",
-    number: "03",
+    number: "02",
     name: "AD Elite",
-    subtitle: "Máximo rendimiento",
-    price: "199€",
+    subtitle: "Un seguimiento más cercano",
+    price: "120€",
     period: "/ mes",
+    quarterlyPrice: "300€",
+    quarterlyPeriod: "/ trimestre",
     description:
-      "La experiencia más completa para quienes necesitan máxima personalización, disponibilidad y control del proceso.",
+      "Un acompañamiento más completo para quienes buscan un seguimiento más frecuente durante todo el proceso.",
     idealFor:
-      "Ideal para objetivos exigentes, preparación deportiva o personas que necesitan un seguimiento intensivo.",
+      "Ideal si quieres un mayor control de tu evolución, revisiones frecuentes y feedback técnico durante tus entrenamientos.",
     features: [
-      "Todo lo incluido en Performance",
-      "Revisión del progreso semanal",
-      "Ajustes más frecuentes de la planificación",
-      "Análisis técnico completo",
-      "Máxima prioridad de seguimiento",
-      "1 sesión privada 1:1 por videollamada al mes ",
+      "Planificación semanal de entrenamiento",
+      "Planificación de nutrición",
+      "Seguimiento mediante Harbiz",
+      "Feedback y soporte vía WhatsApp / Chat Harbiz",
+      "Revisión semanal",
+      "Corrección de patrones básicos mediante vídeo",
     ],
     cta: "Elegir Elite",
   },
 ];
 
 export default function InteractivePlans() {
-  const [activePlan, setActivePlan] = useState(1);
+  const [activePlan, setActivePlan] = useState(0);
   const shouldReduceMotion = useReducedMotion();
 
   const selectedPlan = plans[activePlan];
@@ -120,7 +100,7 @@ export default function InteractivePlans() {
             </p>
 
             <h2 className="max-w-4xl text-[clamp(2.8rem,5vw,5.4rem)] font-semibold uppercase leading-[0.91] tracking-[-0.055em]">
-              Tres niveles.
+              Dos planes.
               <br />
               Un mismo compromiso.
             </h2>
@@ -174,18 +154,6 @@ export default function InteractivePlans() {
                         >
                           {plan.number}
                         </span>
-
-                        {plan.featured && (
-                          <span
-                            className={`text-[9px] font-medium uppercase tracking-[0.18em] transition-colors duration-500 sm:text-[10px] ${
-                              isActive
-                                ? "text-white/60"
-                                : "text-black/45"
-                            }`}
-                          >
-                            Más popular
-                          </span>
-                        )}
                       </div>
 
                       <h3 className="text-base font-semibold uppercase tracking-[-0.02em] sm:text-lg">
@@ -266,12 +234,6 @@ export default function InteractivePlans() {
                       <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-black/35 sm:text-xs">
                         Plan {selectedPlan.number}
                       </span>
-
-                      {selectedPlan.featured && (
-                        <span className="border border-black/15 px-3 py-1 text-[9px] font-medium uppercase tracking-[0.18em] text-black/55 sm:text-[10px]">
-                          Más popular
-                        </span>
-                      )}
                     </div>
 
                     <h3 className="mt-7 max-w-3xl break-words text-[clamp(2.5rem,5vw,4.8rem)] font-semibold uppercase leading-[0.92] tracking-[-0.055em]">
@@ -283,7 +245,7 @@ export default function InteractivePlans() {
                     </p>
                   </div>
 
-                  <div className="border-t border-black/10 pt-8 xl:min-w-[230px] xl:border-l xl:border-t-0 xl:pl-10 xl:pt-0 xl:text-right">
+                  <div className="border-t border-black/10 pt-8 xl:min-w-[280px] xl:border-l xl:border-t-0 xl:pl-10 xl:pt-0 xl:text-right">
                     <div className="flex items-end gap-2 xl:justify-end">
                       <span className="text-[clamp(4.3rem,8vw,7.5rem)] font-semibold leading-[0.78] tracking-[-0.075em]">
                         {selectedPlan.price}
@@ -294,9 +256,15 @@ export default function InteractivePlans() {
                       </span>
                     </div>
 
-                    <p className="mt-5 text-[10px] uppercase tracking-[0.22em] text-black/30 sm:text-xs">
-                      Sin permanencia
-                    </p>
+                    <div className="mt-6 border-t border-black/10 pt-5">
+                      <span className="text-2xl font-semibold tracking-[-0.04em]">
+                        {selectedPlan.quarterlyPrice}
+                      </span>
+
+                      <span className="ml-2 text-sm text-black/35">
+                        {selectedPlan.quarterlyPeriod}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
