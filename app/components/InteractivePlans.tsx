@@ -13,20 +13,20 @@ const plans = [
     id: "essential",
     number: "01",
     name: "AD Essential",
-    subtitle: "Tu punto de partida",
+    subtitle: "Planificación y seguimiento para avanzar con autonomía.",
     price: "80€",
     period: "/ mes",
     quarterlyPrice: "225€",
     quarterlyPeriod: "/ trimestre",
     description:
-      "Una planificación personalizada para empezar o seguir avanzando con una estructura adaptada a ti.",
+      "Una planificación personalizada para avanzar con una estructura clara, adaptada a tu nivel, tus objetivos y tu día a día.",
     idealFor:
-      "Ideal si buscas mejorar tu composición corporal, ganar fuerza, crear constancia y llevar una planificación adaptada a tu día a día.",
+      "Ideal si buscas una planificación profesional y seguimiento periódico, manteniendo mayor autonomía durante el proceso.",
     features: [
       "Planificación semanal de entrenamiento",
-      "Planificación de nutrición",
+      "Orientación nutricional adaptada a tus objetivos",
       "Seguimiento mediante Harbiz",
-      "Feedback y soporte vía WhatsApp / Chat Harbiz",
+      "Soporte vía WhatsApp / Chat Harbiz",
       "Revisión cada 15 días",
     ],
     cta: "Elegir Essential",
@@ -35,22 +35,24 @@ const plans = [
     id: "elite",
     number: "02",
     name: "AD Elite",
-    subtitle: "Un seguimiento más cercano",
+    subtitle: "Seguimiento semanal y mayor control de tu evolución.",
     price: "120€",
     period: "/ mes",
     quarterlyPrice: "300€",
     quarterlyPeriod: "/ trimestre",
     description:
-      "Un acompañamiento más completo para quienes buscan un seguimiento más frecuente durante todo el proceso.",
+      "Un acompañamiento más cercano, con seguimiento semanal, ajustes frecuentes y mayor contacto durante todo el proceso.",
     idealFor:
-      "Ideal si quieres un mayor control de tu evolución, revisiones frecuentes y feedback técnico durante tus entrenamientos.",
+      "Ideal si buscas una supervisión más completa, mayor control de tu evolución y feedback frecuente para ajustar el proceso.",
     features: [
       "Planificación semanal de entrenamiento",
-      "Planificación de nutrición",
+      "Orientación nutricional adaptada a tus objetivos",
       "Seguimiento mediante Harbiz",
-      "Feedback y soporte vía WhatsApp / Chat Harbiz",
+      "Soporte prioritario vía WhatsApp / Chat Harbiz",
       "Revisión semanal",
-      "Corrección de patrones básicos mediante vídeo",
+      "Ajustes semanales según evolución",
+      "Análisis técnico mediante vídeo",
+      "Videollamada individual mensual",
     ],
     cta: "Elegir Elite",
   },
@@ -83,9 +85,7 @@ export default function InteractivePlans() {
 
       <div className="relative mx-auto max-w-[1600px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28 xl:py-32">
         <motion.div
-          initial={
-            shouldReduceMotion ? false : { opacity: 0, y: 24 }
-          }
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{
@@ -100,23 +100,21 @@ export default function InteractivePlans() {
             </p>
 
             <h2 className="max-w-4xl text-[clamp(2.8rem,5vw,5.4rem)] font-semibold uppercase leading-[0.91] tracking-[-0.055em]">
-              Dos planes.
+              Elige cómo quieres
               <br />
-              Un mismo compromiso.
+              que te acompañemos.
             </h2>
           </div>
 
           <p className="max-w-lg text-sm leading-7 text-black/50 sm:text-base sm:leading-8 lg:justify-self-end">
-            Selecciona el nivel de acompañamiento que mejor se adapta a tu
-            objetivo. El contenido cambia sin abandonar la misma sección.
+            Elige el nivel de seguimiento que mejor encaje contigo, tu objetivo
+            y el momento en el que estás.
           </p>
         </motion.div>
 
         <div className="grid gap-8 pt-10 lg:grid-cols-[330px_minmax(0,1fr)] lg:gap-10 lg:pt-12 xl:grid-cols-[390px_minmax(0,1fr)] xl:gap-14">
           <motion.div
-            initial={
-              shouldReduceMotion ? false : { opacity: 0, x: -24 }
-            }
+            initial={shouldReduceMotion ? false : { opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
@@ -147,9 +145,7 @@ export default function InteractivePlans() {
                       <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
                         <span
                           className={`text-[11px] tracking-[0.2em] transition-colors duration-500 ${
-                            isActive
-                              ? "text-white/35"
-                              : "text-black/30"
+                            isActive ? "text-white/35" : "text-black/30"
                           }`}
                         >
                           {plan.number}
@@ -162,9 +158,7 @@ export default function InteractivePlans() {
 
                       <p
                         className={`mt-1 text-sm transition-colors duration-500 ${
-                          isActive
-                            ? "text-white/45"
-                            : "text-black/45"
+                          isActive ? "text-white/45" : "text-black/45"
                         }`}
                       >
                         {plan.subtitle}
@@ -198,8 +192,8 @@ export default function InteractivePlans() {
             </div>
 
             <p className="mt-6 max-w-sm text-xs leading-6 text-black/40">
-              Todos los planes se adaptan al nivel, disponibilidad y objetivos
-              de cada persona.
+              Ambos planes se adaptan a tu nivel, disponibilidad y objetivos.
+              La diferencia está en el nivel de seguimiento durante el proceso.
             </p>
           </motion.div>
 
@@ -240,7 +234,7 @@ export default function InteractivePlans() {
                       {selectedPlan.name}
                     </h3>
 
-                    <p className="mt-4 text-xs uppercase tracking-[0.14em] text-black/35 sm:text-sm">
+                    <p className="mt-4 max-w-xl text-xs uppercase leading-6 tracking-[0.14em] text-black/35 sm:text-sm">
                       {selectedPlan.subtitle}
                     </p>
                   </div>
@@ -256,14 +250,20 @@ export default function InteractivePlans() {
                       </span>
                     </div>
 
-                    <div className="mt-6 border-t border-black/10 pt-5">
-                      <span className="text-2xl font-semibold tracking-[-0.04em]">
-                        {selectedPlan.quarterlyPrice}
-                      </span>
+                    <div className="mt-7 border-t border-black/[0.07] pt-4">
+                      <p className="mb-1 text-[9px] font-medium uppercase tracking-[0.2em] text-black/25">
+                        Opción trimestral
+                      </p>
 
-                      <span className="ml-2 text-sm text-black/35">
-                        {selectedPlan.quarterlyPeriod}
-                      </span>
+                      <div className="flex items-baseline gap-1.5 xl:justify-end">
+                        <span className="text-base font-medium tracking-[-0.02em] text-black/40">
+                          {selectedPlan.quarterlyPrice}
+                        </span>
+
+                        <span className="text-xs text-black/30">
+                          {selectedPlan.quarterlyPeriod}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

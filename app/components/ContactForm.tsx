@@ -107,7 +107,6 @@ const trainingPlaces = ["Gimnasio", "Casa", "Ambos"];
 const plans = [
   "No estoy seguro",
   "AD Essential",
-  "AD Performance",
   "AD Elite",
 ];
 
@@ -1106,137 +1105,54 @@ ${formData.contactPreference}
                   initial={
                     shouldReduceMotion
                       ? { opacity: 1 }
-                      : { opacity: 0, y: 24 }
+                      : { opacity: 0, scale: 0.98, y: 14 }
                   }
-                  animate={{ opacity: 1, y: 0 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                  }}
                   transition={{
-                    duration: 0.7,
+                    duration: 0.55,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="relative flex min-h-[590px] flex-col justify-center overflow-hidden border border-white/10 bg-white/[0.015] px-6 py-12 sm:px-10 lg:px-14 lg:py-16"
+                  className="flex min-h-[590px] flex-col items-start justify-center"
                 >
-                  <motion.div
-                    initial={
-                      shouldReduceMotion
-                        ? false
-                        : { opacity: 0, scale: 0.75, rotate: -8 }
-                    }
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                      rotate: 0,
-                    }}
-                    transition={{
-                      delay: shouldReduceMotion ? 0 : 0.1,
-                      duration: 0.55,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="flex h-16 w-16 items-center justify-center border border-white/25 bg-white text-black sm:h-[72px] sm:w-[72px]"
-                  >
+                  <div className="flex h-14 w-14 items-center justify-center border border-white/20 bg-white/[0.025]">
                     <CheckCircle2
-                      size={30}
-                      strokeWidth={1.7}
+                      size={25}
+                      strokeWidth={1.5}
                     />
-                  </motion.div>
+                  </div>
 
-                  <motion.p
-                    initial={
-                      shouldReduceMotion
-                        ? false
-                        : { opacity: 0, y: 10 }
-                    }
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: shouldReduceMotion ? 0 : 0.18,
-                      duration: 0.5,
-                    }}
-                    className="mt-10 text-[10px] font-medium uppercase tracking-[0.32em] text-white/35 sm:text-[11px]"
-                  >
-                    Solicitud recibida
-                  </motion.p>
+                  <p className="mt-10 text-[11px] font-medium uppercase tracking-[0.3em] text-white/30">
+                    Solicitud completada
+                  </p>
 
-                  <motion.h3
-                    initial={
-                      shouldReduceMotion
-                        ? false
-                        : { opacity: 0, y: 14 }
-                    }
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: shouldReduceMotion ? 0 : 0.25,
-                      duration: 0.6,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="mt-5 max-w-4xl text-[clamp(2.8rem,5.6vw,6.2rem)] font-semibold uppercase leading-[0.88] tracking-[-0.06em]"
-                  >
+                  <h3 className="mt-5 max-w-3xl text-[clamp(2.7rem,5vw,5.5rem)] font-semibold uppercase leading-[0.91] tracking-[-0.055em]">
                     Gracias,
                     <br />
-                    {formData.name.trim().split(/\s+/)[0] || "por confiar"}.
-                  </motion.h3>
+                    {formData.name.split(" ")[0]}.
+                  </h3>
 
-                  <motion.div
-                    initial={
-                      shouldReduceMotion
-                        ? false
-                        : { opacity: 0, y: 12 }
-                    }
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: shouldReduceMotion ? 0 : 0.34,
-                      duration: 0.55,
-                    }}
-                    className="mt-9 max-w-2xl"
+                  <p className="mt-8 max-w-xl text-sm leading-7 text-white/50 sm:text-base sm:leading-8">
+                    Hemos recibido tu información. El siguiente paso
+                    será revisar tu situación y contactar contigo para
+                    organizar una videollamada de valoración.
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={restartForm}
+                    className="group mt-10 inline-flex items-center gap-3 border-b border-white pb-2 text-xs font-medium uppercase tracking-[0.18em] transition-opacity hover:opacity-60"
                   >
-                    <p className="text-sm leading-7 text-white/55 sm:text-base sm:leading-8">
-                      Hemos recibido correctamente tu solicitud de
-                      valoración.
-                    </p>
+                    Enviar otra solicitud
 
-                    <p className="mt-5 text-sm leading-7 text-white/45 sm:text-base sm:leading-8">
-                      Durante las próximas{" "}
-                      <span className="font-medium text-white/80">
-                        24–48 horas
-                      </span>{" "}
-                      revisaremos toda la información que nos has
-                      facilitado. Si el programa encaja con tu
-                      situación, nos pondremos en contacto contigo
-                      para organizar una videollamada inicial.
-                    </p>
-
-                    <p className="mt-5 text-sm leading-7 text-white/45 sm:text-base sm:leading-8">
-                      Nuestro objetivo es ofrecerte un acompañamiento
-                      realmente personalizado desde el primer día.
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    initial={
-                      shouldReduceMotion
-                        ? false
-                        : { opacity: 0 }
-                    }
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      delay: shouldReduceMotion ? 0 : 0.45,
-                      duration: 0.5,
-                    }}
-                    className="mt-10 border-t border-white/10 pt-7"
-                  >
-                    <button
-                      type="button"
-                      onClick={restartForm}
-                      className="group inline-flex min-h-12 items-center gap-3 text-[11px] font-medium uppercase tracking-[0.18em] text-white/55 transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:text-xs"
-                    >
-                      <ArrowLeft
-                        size={16}
-                        className="transition-transform duration-300 group-hover:-translate-x-1"
-                      />
-                      Enviar otra solicitud
-                    </button>
-                  </motion.div>
-
-                  <div className="pointer-events-none absolute -bottom-28 -right-24 h-72 w-72 rounded-full border border-white/[0.04]" />
-                  <div className="pointer-events-none absolute -bottom-16 -right-12 h-48 w-48 rounded-full border border-white/[0.05]" />
+                    <ArrowRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
